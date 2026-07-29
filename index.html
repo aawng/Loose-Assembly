@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>loose assembly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-card:#F5F5F5;
+    --ink:#111111;
+    --accent:#F2884B;
+    --teal:#555555;
+    --line:#BFBFBF;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(var(--line) 1px, transparent 1px) 0 0/22px 22px,
+      var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:64px 20px 40px;
+  }
+
+  .page{
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .logo{
+    width:128px;
+    height:auto;
+    margin-bottom:20px;
+  }
+
+  h1{
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight:700;
+    font-size:clamp(28px, 7vw, 36px);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin:0 0 8px;
+    text-align:center;
+  }
+
+  .tagline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--accent);
+    text-align:center;
+    margin:0 0 48px;
+  }
+
+  .spine{
+    position:relative;
+    width:100%;
+    padding-left:14px;
+    border-left:2px dashed var(--line);
+  }
+
+  .component{
+    position:relative;
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:16px 18px;
+    margin-bottom:16px;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+
+  .component::before{
+    content:"";
+    position:absolute;
+    left:-16px;
+    top:50%;
+    width:14px;
+    border-top:2px dashed var(--line);
+  }
+
+  .component:hover{
+    transform:translateX(6px);
+    border-color:var(--accent);
+  }
+
+  .row1{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:4px;
+  }
+
+  .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--accent);
+    letter-spacing:1px;
+  }
+
+  .qty{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    color:var(--teal);
+    letter-spacing:1px;
+  }
+
+  .label{
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight:700;
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin:4px 0 2px;
+  }
+
+  .handle{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink);
+    opacity:0.7;
+  }
+
+  footer{
+    margin-top:32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--line);
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAD9CAYAAABA3unhAAAES0lEQVR4nO3d2W7bQAwFUKXo//+y+9IkblzZljQLyTkH6FOBZDZec5Q43jYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKjiY/YA2G5P/s/+MJUDOM+zYPjJPjGFgzfHkXC4Z78YyoEb72w43LNvDPFr9gAW0yIcWn4deEpA5HXbBAWdCYhxFDPpCIj8BA/dCIgxehexkKALAQHsEhDALgEB7BIQ/Xk+QFoCAtglIIBdAgLYJSD68vyB1AREDd7dSRcCAtglIIBdAiI/1wu6ERD9eEBJegIC2PV79gBI553OyLWnCB1EbiML8cifuHO9KkJA9FGtQM7Mp9oaLElA8IpCX5iAyGvE9eJqOAiX5AREe1WKoso8uEBA8D8tw0HQJCYgcup5vVDQfBEQbWUvrl7jz74uyxIQfFLEPBAQjPqMTwGUkIBoZ1QBtHz+oGh5SkCsSzjwkoBY06xwEErJeDdnG1muFwqUQ3QQ64gSDlHGwRt0ENdFP/DRx0dgOojahAOXCIhrRhbg0ecPkcMh8ti444pRj+KjGR3EeRELMeKYSExA5PDO9SJbOGQb75IExDnRDne08VCEgMgvczhkHvsSBMRxow/1s+uFAqMrAcFsQi4wAXFMtMPsE6zoSkAAuwTE+2Z0D+90CBW6iGidGX8JCGCXgKhBF0EXAuI9Ua8X0JWAqKNCoOgighEQvOtjqxFCHCAgXlv5Ve1jewyG3iGx8nqH4+9B8JMugS86iFquFHekK4QuIggdRFy3rX/BRgkEgnJAnpv9SnZ2f56Nu9Wej1gb53MyHURsZ7sIhUUTnkHEN7uL2TMihKLOfRkCYl+kwxlpLCxEQOQRMSR0EcUJiFxud/+i8LyjMJu7L1IRvjJ7Hyv8RGPET37SWXbiL2QKh59m7Wm2kDg73qVqxhWjnllXkEyFc2V9Mr94HJZpU0eqdghG7XOGLqLlGMvXjw7iUbVw2LZxc4peMBX3tisBsY5RV4+obwfvMffygSMg4JrSISEg1rNiF1G6iHsSEP9ykOCOgKCXaF1ET5HG0pSAoLqyxTuCgPjmIOVjzzoTEPQU/fcieEFAkJ0uoiMBsZ7Rr+q6iMQEBBV4q3YnAgLYJSDWMuvVtPrne8z+/t0IiG9lNxl7e5aAYJReRar4OxIQ/3LYcjmyXwLqBAHxqOqGV53XEa3XoPyaCghGallQZ79W+aJuyWI9V+W39CLt89U1jfDhw5HWs6tlJnpB9pCIuMdH17TnHCKNJZylJntRtqDIuLefazxj7K/2N+N6AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAs7A/2r4GUX635EAAAAABJRU5ErkJggg==" alt="Loose Assembly logo" class="logo">
+    <h1>Loose Assembly</h1>
+    <p class="tagline">We design in transparency</p>
+
+    <div class="spine">
+      <a class="component" href="https://instagram.com/looseassembly" target="_blank" rel="noopener">
+        <div class="row1">
+          <span class="num">PART 01</span>
+          <span class="qty">QTY 1</span>
+        </div>
+        <div class="label">Instagram</div>
+        <div class="handle">@looseassembly</div>
+      </a>
+
+      <a class="component" href="https://tiktok.com/@loose.assembly" target="_blank" rel="noopener">
+        <div class="row1">
+          <span class="num">PART 02</span>
+          <span class="qty">QTY 1</span>
+        </div>
+        <div class="label">TikTok</div>
+        <div class="handle">@loose.assembly</div>
+      </a>
+
+      <a class="component" href="mailto:looseassembly@gmail.com">
+        <div class="row1">
+          <span class="num">PART 03</span>
+          <span class="qty">QTY 1</span>
+        </div>
+        <div class="label">Contact Us</div>
+        <div class="handle">looseassembly@gmail.com</div>
+      </a>
+    </div>
+
+    <footer>Est. 2025</footer>
+  </div>
+</body>
+</html>
